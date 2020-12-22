@@ -1,0 +1,26 @@
+version: "3"
+
+services:
+  webserver1:
+    image: ubuntu:latest
+    container_name: ubuntu_container
+    volumes:
+      - ./app/:/home/app
+    expose:
+      - 80
+    ports:
+      - "3100:3000"
+    stdin_open: true
+    tty: true
+
+  webserver2:
+    image: gcr.io/distroless/nodejs:10
+    container_name: distroless_container
+    volumes:
+      - ./app/:/home/app
+    expose:
+      - 80
+    ports:
+      - "3200:3000"
+    stdin_open: true
+    tty: true
